@@ -1,4 +1,4 @@
-package Tarea3Server.Model;
+package tarea.server.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -6,6 +6,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @ApiModel(description = "Class that represents a product")
 @Entity
@@ -20,12 +21,12 @@ public class Product {
     private String description;
     @Min(0)
     @ApiModelProperty(notes = "Price of the product", example = "1.50")
-    private float price;
+    private BigDecimal price;
 
     public Product() {
     }
 
-    public Product(String code, String name, String description, float price) {
+    public Product(String code, String name, String description, BigDecimal price) {
         this.code = code;
         this.name = name;
         this.description = description;
@@ -56,11 +57,11 @@ public class Product {
         this.description = description;
     }
 
-    public float getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

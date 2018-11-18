@@ -1,4 +1,4 @@
-package Tarea3Server.Configuration;
+package tarea.server.configuration;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -13,7 +13,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SwaggerConfiguration {
     private static final String GROUP_NAME = "wecc-products";
-    private static final String PATH_REGEX = "/p.*";
+    private static final String PATH_REGEX = "/[pu].*";
     private static final String API_TITLE = "Product service";
     private static final String API_DESCRIPTION = "This API gives support to Product services";
 
