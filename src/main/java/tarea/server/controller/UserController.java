@@ -41,11 +41,11 @@ public class UserController {
     public ResponseEntity<List<String>> getUserRoles(@ApiParam("Username of the user") @RequestParam String username) {
         User user = userRepository.findByUsername(username);
         if(Objects.isNull(user)){
-            logger.warn("User " + username + " not found.");
+            logger.warn(String.format("User %s not found", username));
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else{
-            logger.info("User " + username + " found. Returning roles.");
+            logger.info(String.format("User %s found. Returning roles", username));
             return new ResponseEntity<>(user.getRoles(), HttpStatus.OK);
         }
     }
@@ -60,11 +60,11 @@ public class UserController {
     public ResponseEntity<String> getUserPassword(@ApiParam("Username of the user") @RequestParam String username) {
         User user = userRepository.findByUsername(username);
         if(Objects.isNull(user)){
-            logger.warn("User " + username + " not found.");
+            logger.warn(String.format("User %s not found", username));
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else{
-            logger.info("User " + username + " found. Returning encrypted credentials.");
+            logger.info(String.format("User %s found. Returning encrypted credentials", username));
             return new ResponseEntity<>(user.getPassword(), HttpStatus.OK);
         }
     }

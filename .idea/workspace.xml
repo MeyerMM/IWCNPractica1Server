@@ -1,48 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27949fe1-67af-403e-a511-e298f56071dd" name="Default Changelist" comment="Agregados requerimientos de Tarea 4">
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/Tarea3Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/components/DatabaseLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/configuration/ExceptionConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/repositories/ProductRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/tarea/server/repositories/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tarea/server/components/DatabaseLoaderTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tarea/server/controller/UserControllerTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/tarea/server/model/ProductServiceTests.java" afterDir="false" />
+    <list default="true" id="27949fe1-67af-403e-a511-e298f56071dd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.8/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Components/DatabaseLoader.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Configuration/SwaggerConfiguration.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Controller/ProductController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Model/Product.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Model/ProductList.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Model/ProductService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Repositories/ProductRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Tarea3Server/Tarea3Server.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Components/DatabaseLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Configuration/SwaggerConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/configuration/SwaggerConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Model/ProductList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/model/ProductList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Model/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/model/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Repositories/ProductRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Tarea3Server/Tarea3Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tarea/server/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -90,28 +57,29 @@
           <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.17" value="2" />
           <entry key="project.open.time.2" value="4" />
+          <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.26" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="19" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bat" value="1" />
-          <entry key="gradle" value="6" />
+          <entry key="gradle" value="7" />
           <entry key="gradlew" value="1" />
-          <entry key="java" value="89" />
+          <entry key="java" value="94" />
           <entry key="properties" value="11" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Groovy" value="6" />
-          <entry key="JAVA" value="89" />
+          <entry key="Groovy" value="7" />
+          <entry key="JAVA" value="94" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="11" />
           <entry key="XML" value="1" />
@@ -120,8 +88,8 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="45" />
-          <entry key="gradle" value="321" />
-          <entry key="java" value="7376" />
+          <entry key="gradle" value="329" />
+          <entry key="java" value="7518" />
           <entry key="properties" value="92" />
           <entry key="txt" value="60" />
           <entry key="xml" value="438" />
@@ -129,8 +97,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Groovy" value="321" />
-          <entry key="JAVA" value="7376" />
+          <entry key="Groovy" value="329" />
+          <entry key="JAVA" value="7518" />
           <entry key="PLAIN_TEXT" value="105" />
           <entry key="Properties" value="92" />
           <entry key="XML" value="438" />
@@ -140,11 +108,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/controller/ProductController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="71" column="121" selection-start-line="71" selection-start-column="121" selection-end-line="71" selection-end-column="121" />
+            <state relative-caret-position="403">
+              <caret line="111" column="67" selection-start-line="111" selection-start-column="67" selection-end-line="111" selection-end-column="67" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,62 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/repositories/ProductRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/logback.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" selection-start-column="18" selection-end-column="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/Tarea3Server.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
-              <folding>
-                <element signature="e#522#523#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/tarea/server/controller/UserControllerTests.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="109">
-              <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="99">
+              <caret line="62" column="57" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -215,8 +132,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/configuration/ExceptionConfiguration.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+            <state relative-caret-position="102">
+              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -225,13 +142,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="82" column="72" selection-start-line="82" selection-start-column="59" selection-end-line="82" selection-end-column="72" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="799">
+              <caret line="47" column="53" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -499,9 +413,9 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="6167663473848" />
+        <entry key="$PROJECT_DIR$" value="6167747099931" />
         <entry key="$PROJECT_DIR$/.gradle" value="0" />
-        <entry key="$PROJECT_DIR$/build.gradle" value="312476688" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1099149630" />
         <entry key="$PROJECT_DIR$/gradle.properties" value="2936878565" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2585518924" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="664216958" />
@@ -739,14 +653,14 @@
         <option value="$PROJECT_DIR$/src/main/java/tarea/server/model/ProductService.java" />
         <option value="$PROJECT_DIR$/src/test/java/tarea/server/model/ProductServiceTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/tarea/server/components/DatabaseLoader.java" />
-        <option value="$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java" />
         <option value="$PROJECT_DIR$/src/main/resources/logback.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/tarea/server/configuration/ExceptionConfiguration.java" />
         <option value="$PROJECT_DIR$/src/test/java/tarea/server/controller/UserControllerTests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/tarea/server/controller/ProductController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -773,7 +687,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -859,11 +773,41 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Tarea3Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tarea3Server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tarea3Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tarea3Server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tarea3Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tarea3Server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Tarea3Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tarea3Server" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -874,7 +818,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542542696161" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542544566393" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../Tarea3Client" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -895,7 +839,15 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.Tarea3Server">
+  <component name="RunManager" selected="JUnit.All in Tarea3Server_test">
+    <configuration name="All in Tarea3Server_test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Tarea3Server_test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ProductControllerTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tarea3Server_test" />
       <extension name="coverage">
@@ -910,7 +862,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserControllerTests.getUserPasswordFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductControllerTests.modifyProductFailBadFormat" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Tarea3Server_test" />
       <extension name="coverage">
         <pattern>
@@ -919,8 +871,8 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="tarea.server.controller" />
-      <option name="MAIN_CLASS_NAME" value="tarea.server.controller.UserControllerTests" />
-      <option name="METHOD_NAME" value="getUserPasswordFail" />
+      <option name="MAIN_CLASS_NAME" value="tarea.server.controller.ProductControllerTests" />
+      <option name="METHOD_NAME" value="modifyProductFailBadFormat" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -937,22 +889,6 @@
       <option name="PACKAGE_NAME" value="tarea.server.controller" />
       <option name="MAIN_CLASS_NAME" value="tarea.server.controller.UserControllerTests" />
       <option name="METHOD_NAME" value="getUserPasswordOk" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UserControllerTests.getUserRolesFail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Tarea3Server_test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tarea.server.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="tarea.server.controller" />
-      <option name="MAIN_CLASS_NAME" value="tarea.server.controller.UserControllerTests" />
-      <option name="METHOD_NAME" value="getUserRolesFail" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -981,19 +917,19 @@
     </configuration>
     <list>
       <item itemvalue="Spring Boot.TareaServer" />
-      <item itemvalue="JUnit.UserControllerTests.getUserRolesFail" />
-      <item itemvalue="JUnit.UserControllerTests.getUserPasswordFail" />
       <item itemvalue="JUnit.UserControllerTests.getUserPasswordOk" />
       <item itemvalue="Spring Boot.Tarea3Server" />
       <item itemvalue="JUnit.ProductControllerTests" />
+      <item itemvalue="JUnit.ProductControllerTests.modifyProductFailBadFormat" />
+      <item itemvalue="JUnit.All in Tarea3Server_test" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in Tarea3Server_test" />
         <item itemvalue="Spring Boot.Tarea3Server" />
+        <item itemvalue="JUnit.ProductControllerTests.modifyProductFailBadFormat" />
         <item itemvalue="JUnit.ProductControllerTests" />
         <item itemvalue="JUnit.UserControllerTests.getUserPasswordOk" />
-        <item itemvalue="JUnit.UserControllerTests.getUserPasswordFail" />
-        <item itemvalue="JUnit.UserControllerTests.getUserRolesFail" />
       </list>
     </recent_temporary>
   </component>
@@ -1025,17 +961,20 @@
       <workItem from="1542118918958" duration="14497000" />
       <workItem from="1542229691495" duration="4960000" />
       <workItem from="1542450421855" duration="7028000" />
-      <workItem from="1542533408361" duration="7789000" />
+      <workItem from="1542533408361" duration="8860000" />
+      <workItem from="1542543837266" duration="508000" />
     </task>
+    <task id="LOCAL-00001" summary="Agregados requerimientos de Tarea 4">
+      <created>1542542706328</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1542542706328</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ProductControllerTests_submitProduct - 2018.11.14 at 15h 00m 35s.xml">
-      <configuration name="ProductControllerTests.submitProduct" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ProductControllerTests_removeProductOk - 2018.11.14 at 15h 03m 43s.xml">
-      <configuration name="ProductControllerTests.removeProductOk" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ProductControllerTests_removeProductFail - 2018.11.14 at 15h 04m 15s.xml">
       <configuration name="ProductControllerTests.removeProductFail" configurationId="JUnit" />
     </history-entry>
@@ -1060,9 +999,15 @@
     <history-entry file="ProductControllerTests - 2018.11.17 at 13h 15m 29s.xml">
       <configuration name="ProductControllerTests" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ProductControllerTests_modifyProductFailBadFormat - 2018.11.18 at 13h 15m 34s.xml">
+      <configuration name="ProductControllerTests.modifyProductFailBadFormat" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_Tarea3Server_test - 2018.11.18 at 13h 25m 35s.xml">
+      <configuration name="All in Tarea3Server_test" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108838000" />
+    <option name="totallyTimeSpent" value="110417000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1075,9 +1020,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1549" height="837" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.42857143" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.43460765" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1094,9 +1038,9 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3286119" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.3286119" />
       <window_info anchor="bottom" id="Spring" order="8" weight="0.3286119" />
-      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3512748" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.509915" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.501006" side_tool="true" weight="0.5028329" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.32152975" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32152975" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
       <window_info anchor="bottom" id="Java Enterprise" order="14" weight="0.3286119" />
@@ -1180,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/configuration/SwaggerConfiguration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="42" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradlew.bat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1205" />
@@ -1208,11 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#265#266#0" expanded="true" />
-            <element signature="e#335#336#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1220,9 +1152,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2431">
           <caret line="157" column="103" selection-start-line="156" selection-start-column="8" selection-end-line="157" selection-end-column="103" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1237,14 +1166,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="28" column="24" lean-forward="true" selection-start-line="28" selection-start-column="24" selection-end-line="28" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#561#562#0" expanded="true" />
-            <element signature="e#611#612#0" expanded="true" />
-            <element signature="method#removeProduct#0;class#ProductService#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1259,9 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="29" column="33" lean-forward="true" selection-start-line="29" selection-start-column="33" selection-end-line="29" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1279,13 +1197,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="48" column="46" selection-start-line="48" selection-start-column="46" selection-end-line="48" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/Tarea3Server.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1300,16 +1211,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1320,20 +1221,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/configuration/SwaggerConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/configuration/ExceptionConfiguration.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
+        <state relative-caret-position="102">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="47" column="53" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/tarea/server/controller/ProductControllerTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="82" column="72" selection-start-line="82" selection-start-column="59" selection-end-line="82" selection-end-column="72" />
+        <state relative-caret-position="97">
+          <caret line="97" selection-start-line="97" selection-end-line="97" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1342,11 +1257,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/controller/ProductController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="71" column="121" selection-start-line="71" selection-start-column="121" selection-end-line="71" selection-end-column="121" />
+        <state relative-caret-position="403">
+          <caret line="111" column="67" selection-start-line="111" selection-start-column="67" selection-end-line="111" selection-end-column="67" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tarea/server/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="62" column="57" selection-start-line="62" selection-start-column="57" selection-end-line="62" selection-end-column="57" />
         </state>
       </provider>
     </entry>

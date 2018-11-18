@@ -52,11 +52,12 @@ public class ProductController {
     public ResponseEntity<Product> getProduct(@ApiParam("Unique code identifier of the product") @PathVariable String code) {
         Product product = productList.getProduct(code);
         if(Objects.isNull(product)){
-            logger.warn("Product with code " + code + " not found");
+
+            logger.warn(String.format("Product with code %s not found", code));
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         else{
-            logger.info("Product with code " + code + " found");
+            logger.info(String.format("Product with code %s found", code));
             return new ResponseEntity<>(product, HttpStatus.OK);
         }
     }
@@ -72,7 +73,7 @@ public class ProductController {
     public ResponseEntity modifyProduct(@ApiParam("Product object to be submitted") @RequestBody Product modifiedProduct) {
             Product originalProduct = productList.getProduct(modifiedProduct.getCode());
             if(Objects.isNull(originalProduct)){
-                logger.warn("Product with code " + modifiedProduct.getCode() + " not found. Modification failed");
+                logger.warn(String.format("Product with code %s found  not found. Modification failed", modifiedProduct.getCode()));
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             else{
@@ -81,7 +82,7 @@ public class ProductController {
                         modifiedProduct.getDescription(),
                         modifiedProduct.getPrice()
                 );
-                logger.info("Product with code " +  modifiedProduct.getCode() + " modified");
+                logger.info(String.format("Product with code %s modified", modifiedProduct.getCode()));
                 return new ResponseEntity<>(HttpStatus.OK);
             }
     }
@@ -108,11 +109,11 @@ public class ProductController {
     public ResponseEntity removeProduct(@ApiParam("Unique code identifier of the product") @PathVariable String code) {
         boolean success = productList.removeProduct(code);
         if(success){
-            logger.info("Product of code " + code +" removed");
+            logger.info(String.format("Product with code %s removed", code));
             return new ResponseEntity<>(HttpStatus.OK);
         }
         else{
-            logger.warn("Product with code " + code + " not found. Elimination failed");
+            logger.warn(String.format("Product with code %s not found. Elimination failed.", code));
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

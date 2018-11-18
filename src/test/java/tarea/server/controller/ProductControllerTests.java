@@ -97,15 +97,6 @@ public class ProductControllerTests {
     }
 
     @Test
-    public void modifyProductFailBadFormat() {
-        ResponseEntity expected = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        ResponseEntity<Product> result = productController.modifyProduct(null);
-        Assert.assertEquals(result, expected);
-        verify(productList, times(0)).getProduct(any(String.class));
-        verify(productList, times(0)).updateProduct(any(String.class),any(String.class),any(String.class),any(BigDecimal.class));
-    }
-
-    @Test
     public void submitProduct() {
         productController.submitProduct(product1);
         verify(productList, times(1)).addProduct(product1);
