@@ -16,7 +16,7 @@ public class User {
     @ApiModelProperty(notes = "Unique name that identifies the user", example = "\"bestUsernameEver\"", required = true)
     @Id
     private String username;
-    @ApiModelProperty(notes = "Private password of the user", example = "superpassword")
+    @ApiModelProperty(notes = "Encrypted password of the user", example = "$2a$04$DP1EadCzK7tDCspks.B4MO0iOE2hUoPY3AVelG0kjALRcoLU52qZG")
     private String password;
     @ApiModelProperty(notes = "Collection of roles assigned to the user", example = "ROLE_USER")
     @ElementCollection(fetch = FetchType.EAGER)

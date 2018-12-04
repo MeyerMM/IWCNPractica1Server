@@ -36,7 +36,7 @@ public class DatabaseLoaderTests {
         when(productRepository.save(any(Product.class))).thenReturn(new Product());
         when(userRepository.save(any(User.class))).thenReturn(new User());
         databaseLoader.initDatabase();
-        verify(productRepository, times(2)).save(any(Product.class));
+        verify(productRepository, times(0)).save(any(Product.class));
         verify(userRepository, times(2)).save(any(User.class));
 
     }

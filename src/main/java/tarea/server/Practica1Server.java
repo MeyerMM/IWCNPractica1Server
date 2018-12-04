@@ -7,8 +7,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
-public class Tarea3Server {
+public class Practica1Server {
     public static void main(String[] args) {
-        SpringApplication.run(Tarea3Server.class, args);
+        SpringApplication.run(Practica1Server.class, args);
     }
 }

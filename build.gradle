@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.13.0')
     }
 }
 
@@ -16,13 +17,19 @@ plugins {
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "jacoco"
+apply plugin: 'com.palantir.docker'
 
-group = 'Ingenieria.Web'
+group = 'meyermm'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
+bootJar {
+    baseName = 'practica1server'
+}
 
 repositories {
     mavenCentral()
@@ -46,10 +53,23 @@ dependencies {
     compile('javax.xml.bind:jaxb-api:2.3.0')
     compile "io.springfox:springfox-swagger2:2.9.2"
     compile 'io.springfox:springfox-swagger-ui:2.9.2'
+    compile 'mysql:mysql-connector-java'
     testCompile("org.springframework.boot:spring-boot-starter-test")
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-    runtimeOnly('com.h2database:h2')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    
+}
+
+task unpack(type: Copy) {
+    dependsOn bootJar
+    from(zipTree(tasks.bootJar.outputs.files.singleFile))
+    into("build/dependency")
+}
+docker {
+    name "${project.group}/${bootJar.baseName}"
+    copySpec.from(tasks.unpack.outputs).into("dependency")
+    buildArgs(['DEPENDENCY': "dependency"])
 }
 
 

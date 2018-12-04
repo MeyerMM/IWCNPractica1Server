@@ -26,13 +26,6 @@ public class DatabaseLoader {
 
     @PostConstruct
     public void initDatabase(){
-        productRepository.save(
-                new Product("001ABC","Coca-cola","Bebida",new BigDecimal(53))
-        );
-        productRepository.save(
-                new Product("123123","Fanta","Bebida", new BigDecimal(45))
-        );
-
         List<String> adminRoles = Arrays.asList("ROLE_VIEW", "ROLE_ADMIN");
         List<String> userRoles = Arrays.asList("ROLE_VIEW");
         String encodedPassword = "$2a$04$DP1EadCzK7tDCspks.B4MO0iOE2hUoPY3AVelG0kjALRcoLU52qZG"; // Password 1234 encoded with BCrypt and a strength of 4
