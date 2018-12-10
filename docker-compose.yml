@@ -13,7 +13,7 @@ services:
     - MYSQL_USER=server
     - MYSQL_PASSWORD=1234
   practica1-server:
-    image: practica1server
+    image: meyermm/practica1server
     depends_on:
     - practica1-mysql
     ports:
