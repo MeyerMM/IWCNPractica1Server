@@ -1,9 +1,11 @@
 language: java
 jdk: oraclejdk8
+before_install:
+  - chmod +x gradlew
+
 #services:
  #- docker
-  before_install:
-  - chmod +x gradlew
+
  # - docker build .
 #deploy:
  # provider: script
