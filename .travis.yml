@@ -5,8 +5,8 @@ services:
 before_install:
   - chmod +x gradlew
   - docker-compose build
-deploy:
-  provider: script
-  script: bash docker_push
-  on:
-    branch: master
+
+
+script: bash docker_push
+on:
+  branch: master
