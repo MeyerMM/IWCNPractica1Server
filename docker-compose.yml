@@ -1,0 +1,26 @@
+
+version: '2'
+
+services:
+  practica1-mysql:
+    container_name: practica1-mysql
+    image: mysql:latest
+    ports:
+    - 3306:3306
+    environment:
+    - MYSQL_ROOT_PASSWORD=1234
+    - MYSQL_DATABASE=productManagement
+    - MYSQL_USER=server
+    - MYSQL_PASSWORD=1234
+  practica1-server:
+    image: practica1server
+    depends_on:
+    - practica1-mysql
+    ports:
+    - 8081:8081
+    environment:
+    - DATABASE_HOST=docker-mysql
+    - DATABASE_USER=server
+    - DATABASE_PASSWORD=1234
+    - DATABASE_NAME=productManagement
+    - DATABASE_PORT=3306
