@@ -1,0 +1,7 @@
+Aplicacion utiliza puerto 8081
+Documentacion de Swagger puede encontrarse en:
+http://localhost:8081/swagger-ui.html#
+Acceso a API de terceros no está operativo. Cuando lo esté, agregar una película completará sus datos con la API externa.
+Aplicación funciona con contenedor Docker de MySQL. En application.properties debe definirse la URL de acceso al contenedor.
+Aplicación puede acceder a contenedor Docker de SonarQube. Para interactuar con él usar un comando como el siguiente:
+    gradle sonarqube -Dsonar.host.url=http://192.168.99.100:9000
