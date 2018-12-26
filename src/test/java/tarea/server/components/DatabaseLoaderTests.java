@@ -6,10 +6,8 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import tarea.server.model.Product;
-import tarea.server.model.User;
-import tarea.server.repositories.ProductRepository;
-import tarea.server.repositories.UserRepository;
+import tarea.server.model.Movie;
+import tarea.server.repositories.MovieRepository;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
@@ -18,27 +16,22 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DatabaseLoaderTests {
+    @Mock
+    private MovieRepository movieRepository;
 
-    @Mock
-    private ProductRepository productRepository;
-    @Mock
-    private UserRepository userRepository;
     @InjectMocks
     private DatabaseLoader databaseLoader;
 
     @Before
     public void setUp(){
-        databaseLoader = new DatabaseLoader(productRepository, userRepository);
+        databaseLoader = new DatabaseLoader(movieRepository);
     }
 
     @Test
     public void checkLoader(){
-        when(productRepository.save(any(Product.class))).thenReturn(new Product());
-        when(userRepository.save(any(User.class))).thenReturn(new User());
+        when(movieRepository.save(any(Movie.class))).thenReturn(new Movie());
         databaseLoader.initDatabase();
-        verify(productRepository, times(0)).save(any(Product.class));
-        verify(userRepository, times(2)).save(any(User.class));
-
+        verify(movieRepository, times(1)).save(any(Movie.class));
     }
 
 }

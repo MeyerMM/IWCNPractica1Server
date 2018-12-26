@@ -39,9 +39,7 @@ configurations {
             // Exclude main class from testing
             // Exclude product and user as they consist only of generated getters and setters
             // Exclude configuration files from testing
-            property "sonar.exclusions", "src/main/java/tarea/server/Tarea3Server.java, " +
-                    "src/main/java/tarea/server/model/Product.java, " +
-                    "src/main/java/tarea/server/model/User.java, " +
+            property "sonar.exclusions", "src/main/java/tarea/server/Practica1Server.java, " +
                     "src/main/java/tarea/server/configuration/*" 
         }
     }

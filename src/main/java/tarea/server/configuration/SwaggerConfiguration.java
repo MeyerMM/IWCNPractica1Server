@@ -12,10 +12,10 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 @Configuration
 public class SwaggerConfiguration {
-    private static final String GROUP_NAME = "wecc-products";
-    private static final String PATH_REGEX = "/[pu].*";
-    private static final String API_TITLE = "Product service";
-    private static final String API_DESCRIPTION = "This API gives support to Product services";
+    private static final String GROUP_NAME = "wecc-movies";
+    private static final String PATH_REGEX = "/[m].*";
+    private static final String API_TITLE = "Movie service";
+    private static final String API_DESCRIPTION = "This API gives support to Movie services";
 
     @Bean
     public Docket api() {

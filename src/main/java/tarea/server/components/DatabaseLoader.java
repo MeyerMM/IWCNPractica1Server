@@ -1,36 +1,34 @@
 package tarea.server.components;
 
-import tarea.server.model.Product;
-import tarea.server.model.User;
-import tarea.server.repositories.ProductRepository;
-import tarea.server.repositories.UserRepository;
+import tarea.server.model.Movie;
+import tarea.server.repositories.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.List;
-
 
 @Component
 public class DatabaseLoader {
-    private ProductRepository productRepository;
-    private UserRepository userRepository;
+    private MovieRepository movieRepository;
 
     @Autowired
-    public DatabaseLoader(ProductRepository productRepository, UserRepository userRepository) {
-        this.productRepository = productRepository;
-        this.userRepository = userRepository;
+    public DatabaseLoader(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
     }
 
     @PostConstruct
     public void initDatabase(){
-        List<String> adminRoles = Arrays.asList("ROLE_VIEW", "ROLE_ADMIN");
-        List<String> userRoles = Arrays.asList("ROLE_VIEW");
-        String encodedPassword = "$2a$04$DP1EadCzK7tDCspks.B4MO0iOE2hUoPY3AVelG0kjALRcoLU52qZG"; // Password 1234 encoded with BCrypt and a strength of 4
-        userRepository.save(new User("root", encodedPassword, adminRoles));
-        userRepository.save(new User("user", encodedPassword, userRoles));
+        Movie movie = new Movie("111", "Get Out");
+        movie.setDescription("A young African-American visits his white girlfriend's parents for the weekend, " +
+                "where his simmering uneasiness about their reception of him eventually reaches a boiling point.");
+        movie.setGenre("Horror, Mystery, Thriller");
+        movie.setDirector("Jordan Peele");
+        movie.setCast("Daniel Kaluuya, Allison Williams, Bradley Whitford");
+        movie.setYear(2017);
+        movie.setScore((float)3.8);
+        movie.setTrailer("https://youtu.be/DzfpyUB60YY");
+        movie.setPoster("https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SY1000_CR0,0,675,1000_AL_.jpg");
+        movieRepository.save(movie);
     }
 
 }
