@@ -18,7 +18,8 @@ public class DatabaseLoader {
 
     @PostConstruct
     public void initDatabase(){
-        Movie movie = new Movie("111", "Get Out");
+        Movie movie = new Movie("Get Out");
+        movie.setId(Integer.toUnsignedLong(1)); //Fix the ID of the initialization movie so it is not created again every time the program is executed.
         movie.setDescription("A young African-American visits his white girlfriend's parents for the weekend, " +
                 "where his simmering uneasiness about their reception of him eventually reaches a boiling point.");
         movie.setGenre("Horror, Mystery, Thriller");

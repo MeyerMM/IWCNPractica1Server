@@ -32,11 +32,9 @@ public class MovieServiceTests {
     public void setUp(){
         movieService = new MovieService(movieRepository);
        movie1 = new Movie(
-                "CODE001",
                 "Anihilation"
         );
         movie2 = new Movie(
-                "CODE002",
                 "Donnie Darko"
         );
         movie2.setDescription("A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.");
@@ -108,19 +106,19 @@ public class MovieServiceTests {
     @Test
     public void getMovieOk(){
         Movie expected = movie1;
-        when(movieRepository.findByCode("CODE001")).thenReturn(expected);
-        Movie result = movieService.getMovie("CODE001");
+        when(movieRepository.findById(movie1.getId())).thenReturn(Optional.of(expected));
+        Movie result = movieService.getMovie(movie1.getId());
         Assert.assertEquals(result, expected);
-        verify(movieRepository, times(1)).findByCode(any(String.class));
+        verify(movieRepository, times(1)).findById(any(Long.class));
     }
 
     @Test
     public void getMovieFail(){
         Movie expected = null;
-        when(movieRepository.findByCode("CODE005")).thenReturn(expected);
-        Movie result = movieService.getMovie("CODE005");
+        when(movieRepository.findById(movie2.getId()+1)).thenReturn(Optional.empty());
+        Movie result = movieService.getMovie(movie2.getId()+1);
         Assert.assertEquals(result, expected);
-        verify(movieRepository, times(1)).findByCode(any(String.class));
+        verify(movieRepository, times(1)).findById(any(Long.class));
     }
 
 
@@ -128,54 +126,54 @@ public class MovieServiceTests {
     @Test
     public void removeMovieOk(){
         Boolean expected = true;
-        when(movieRepository.findByCode("CODE001")).thenReturn(movie1);
-        Boolean result = movieService.removeMovie("CODE001");
+        when(movieRepository.findById(movie1.getId())).thenReturn(Optional.of(movie1));
+        Boolean result = movieService.removeMovie(movie1.getId());
         Assert.assertEquals(result, expected);
-        verify(movieRepository, times(1)).findByCode(any(String.class));
-        verify(movieRepository, times(1)).removeByCode(any(String.class));
+        verify(movieRepository, times(1)).findById(any(Long.class));
+        verify(movieRepository, times(1)).removeById(any(Long.class));
     }
 
     @Test
     public void removeMovieFail(){
         Boolean expected = false;
-        when(movieRepository.findByCode("CODE005")).thenReturn(null);
-        Boolean result = movieService.removeMovie("CODE005");
+        when(movieRepository.findById(any(Long.class))).thenReturn(Optional.empty());
+        Boolean result = movieService.removeMovie(movie2.getId());
         Assert.assertEquals(result, expected);
-        verify(movieRepository, times(1)).findByCode(any(String.class));
-        verify(movieRepository, times(0)).removeByCode(any(String.class));
+        verify(movieRepository, times(1)).findById(any(Long.class));
+        verify(movieRepository, times(0)).removeById(any(Long.class));
     }
 
     @Test
     public void updateWholeMovieOk(){
         int expected = 9;
-        when(movieRepository.findByCode(movie2.getCode())).thenReturn(movie2);
+        when(movieRepository.findById(movie2.getId())).thenReturn(Optional.of(movie2));
         int result = movieService.updateMovie(movie2);
-        verify(movieRepository, times(1)).setMovieNameByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(1)).setMovieDescriptionByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(1)).setMovieYearByCode(any(String.class), any(int.class));
-        verify(movieRepository, times(1)).setMovieGenreByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(1)).setMovieDirectorByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(1)).setMovieCastByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(1)).setMovieScoreByCode(any(String.class), any(float.class));
-        verify(movieRepository, times(1)).setMovieTrailerByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(1)).setMoviePosterByCode(any(String.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieNameById(any(Long.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieDescriptionById(any(Long.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieYearById(any(Long.class), any(int.class));
+        verify(movieRepository, times(1)).setMovieGenreById(any(Long.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieDirectorById(any(Long.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieCastById(any(Long.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieScoreById(any(Long.class), any(float.class));
+        verify(movieRepository, times(1)).setMovieTrailerById(any(Long.class), any(String.class));
+        verify(movieRepository, times(1)).setMoviePosterById(any(Long.class), any(String.class));
         Assert.assertEquals(result, expected);
     }
 
     @Test
     public void updatePartialMovieOk(){
         int expected = 1;
-        when(movieRepository.findByCode(movie1.getCode())).thenReturn(movie1);
+        when(movieRepository.findById(movie1.getId())).thenReturn(Optional.of(movie1));
         int result = movieService.updateMovie(movie1);
-        verify(movieRepository, times(1)).setMovieNameByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDescriptionByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieYearByCode(any(String.class), any(int.class));
-        verify(movieRepository, times(0)).setMovieGenreByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDirectorByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieCastByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieScoreByCode(any(String.class), any(float.class));
-        verify(movieRepository, times(0)).setMovieTrailerByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMoviePosterByCode(any(String.class), any(String.class));
+        verify(movieRepository, times(1)).setMovieNameById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieDescriptionById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieYearById(any(Long.class), any(int.class));
+        verify(movieRepository, times(0)).setMovieGenreById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieDirectorById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieCastById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieScoreById(any(Long.class), any(float.class));
+        verify(movieRepository, times(0)).setMovieTrailerById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMoviePosterById(any(Long.class), any(String.class));
         Assert.assertEquals(result, expected);
     }
 
@@ -183,34 +181,17 @@ public class MovieServiceTests {
     @Test
     public void updateMovieFailCodeNull(){
         int expected = 0;
-        movie2.setCode(null);
+        movie2.setId(null);
         int result = movieService.updateMovie(movie2);
-        verify(movieRepository, times(0)).setMovieNameByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDescriptionByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieYearByCode(any(String.class), any(int.class));
-        verify(movieRepository, times(0)).setMovieGenreByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDirectorByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieCastByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieScoreByCode(any(String.class), any(float.class));
-        verify(movieRepository, times(0)).setMovieTrailerByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMoviePosterByCode(any(String.class), any(String.class));
-        Assert.assertEquals(result, expected);
-    }
-
-    @Test
-    public void updateMovieFailCodeEmpty(){
-        int expected = 0;
-        movie2.setCode("");
-        int result = movieService.updateMovie(movie2);
-        verify(movieRepository, times(0)).setMovieNameByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDescriptionByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieYearByCode(any(String.class), any(int.class));
-        verify(movieRepository, times(0)).setMovieGenreByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDirectorByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieCastByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieScoreByCode(any(String.class), any(float.class));
-        verify(movieRepository, times(0)).setMovieTrailerByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMoviePosterByCode(any(String.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieNameById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieDescriptionById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieYearById(any(Long.class), any(int.class));
+        verify(movieRepository, times(0)).setMovieGenreById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieDirectorById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieCastById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieScoreById(any(Long.class), any(float.class));
+        verify(movieRepository, times(0)).setMovieTrailerById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMoviePosterById(any(Long.class), any(String.class));
         Assert.assertEquals(result, expected);
     }
 
@@ -219,15 +200,15 @@ public class MovieServiceTests {
         int expected = 0;
         movie2.setName("");
         int result = movieService.updateMovie(movie2);
-        verify(movieRepository, times(0)).setMovieNameByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDescriptionByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieYearByCode(any(String.class), any(int.class));
-        verify(movieRepository, times(0)).setMovieGenreByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieDirectorByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieCastByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMovieScoreByCode(any(String.class), any(float.class));
-        verify(movieRepository, times(0)).setMovieTrailerByCode(any(String.class), any(String.class));
-        verify(movieRepository, times(0)).setMoviePosterByCode(any(String.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieNameById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieDescriptionById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieYearById(any(Long.class), any(int.class));
+        verify(movieRepository, times(0)).setMovieGenreById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieDirectorById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieCastById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMovieScoreById(any(Long.class), any(float.class));
+        verify(movieRepository, times(0)).setMovieTrailerById(any(Long.class), any(String.class));
+        verify(movieRepository, times(0)).setMoviePosterById(any(Long.class), any(String.class));
         Assert.assertEquals(result, expected);
     }
 }

@@ -34,12 +34,12 @@ public class MovieService implements MovieList {
         String operationEquals = "Equals";
         String operationGreater = "Greater Than";
         // Initialize Specifications so they all include all the rows
-        MovieSpecifications nameSpec = new MovieSpecifications(new SearchCriteria("code", operationContains, ""));
-        MovieSpecifications genreSpec = new MovieSpecifications(new SearchCriteria("code", operationContains, ""));
-        MovieSpecifications directorSpec = new MovieSpecifications(new SearchCriteria("code", operationContains, ""));
-        MovieSpecifications castSpec = new MovieSpecifications(new SearchCriteria("code", operationContains, ""));
-        MovieSpecifications yearSpec = new MovieSpecifications(new SearchCriteria("code", operationContains, ""));
-        MovieSpecifications scoreSpec = new MovieSpecifications(new SearchCriteria("code", operationContains, ""));
+        MovieSpecifications nameSpec = new MovieSpecifications(new SearchCriteria("id", operationGreater, "0"));
+        MovieSpecifications genreSpec = new MovieSpecifications(new SearchCriteria("id", operationGreater, "0"));
+        MovieSpecifications directorSpec = new MovieSpecifications(new SearchCriteria("id", operationGreater, "0"));
+        MovieSpecifications castSpec = new MovieSpecifications(new SearchCriteria("id", operationGreater, "0"));
+        MovieSpecifications yearSpec = new MovieSpecifications(new SearchCriteria("id", operationGreater, "0"));
+        MovieSpecifications scoreSpec = new MovieSpecifications(new SearchCriteria("id", operationGreater, "0"));
 
 
         if(name.isPresent()){
@@ -81,62 +81,68 @@ public class MovieService implements MovieList {
         return addedMovie != null;
     }
     public int updateMovie(Movie modifiedMovie) {
-        Movie movie = this.getMovie(modifiedMovie.getCode());
+        Movie movie = this.getMovie(modifiedMovie.getId());
         if(Objects.isNull(movie)){ // If the movie is not found in the database, it cannot be updated.
             return 0;
         }
         // Update the attributes of a movie. Returns the number of successful changes.
         int numberOfChanges = 0;
         if(modifiedMovie.getName() != null && !modifiedMovie.getName().isEmpty()){
-            movieRepository.setMovieNameByCode(modifiedMovie.getCode(), modifiedMovie.getName());
+            movieRepository.setMovieNameById(modifiedMovie.getId(), modifiedMovie.getName());
             numberOfChanges++;
         }
         if(modifiedMovie.getDescription() != null) {
-            movieRepository.setMovieDescriptionByCode(modifiedMovie.getCode(), modifiedMovie.getDescription());
+            movieRepository.setMovieDescriptionById(modifiedMovie.getId(), modifiedMovie.getDescription());
             numberOfChanges++;
         }
         if(modifiedMovie.getYear() != null) {
-            movieRepository.setMovieYearByCode(modifiedMovie.getCode(), modifiedMovie.getYear());
+            movieRepository.setMovieYearById(modifiedMovie.getId(), modifiedMovie.getYear());
             numberOfChanges++;
         }
         if(modifiedMovie.getGenre() != null) {
-            movieRepository.setMovieGenreByCode(modifiedMovie.getCode(), modifiedMovie.getGenre());
+            movieRepository.setMovieGenreById(modifiedMovie.getId(), modifiedMovie.getGenre());
             numberOfChanges++;
         }
         if(modifiedMovie.getDirector() != null) {
-            movieRepository.setMovieDirectorByCode(modifiedMovie.getCode(), modifiedMovie.getDirector());
+            movieRepository.setMovieDirectorById(modifiedMovie.getId(), modifiedMovie.getDirector());
             numberOfChanges++;
         }
         if(modifiedMovie.getCast() != null) {
-            movieRepository.setMovieCastByCode(modifiedMovie.getCode(), modifiedMovie.getCast());
+            movieRepository.setMovieCastById(modifiedMovie.getId(), modifiedMovie.getCast());
             numberOfChanges++;
         }
         if(modifiedMovie.getScore() != null) {
-            movieRepository.setMovieScoreByCode(modifiedMovie.getCode(), modifiedMovie.getScore());
+            movieRepository.setMovieScoreById(modifiedMovie.getId(), modifiedMovie.getScore());
             numberOfChanges++;
         }
         if(modifiedMovie.getTrailer() != null) {
-            movieRepository.setMovieTrailerByCode(modifiedMovie.getCode(), modifiedMovie.getTrailer());
+            movieRepository.setMovieTrailerById(modifiedMovie.getId(), modifiedMovie.getTrailer());
             numberOfChanges++;
         }
         if(modifiedMovie.getPoster() != null) {
-            movieRepository.setMoviePosterByCode(modifiedMovie.getCode(), modifiedMovie.getPoster());
+            movieRepository.setMoviePosterById(modifiedMovie.getId(), modifiedMovie.getPoster());
             numberOfChanges++;
         }
         return numberOfChanges;
     }
-    public Movie getMovie(String code){
+    public Movie getMovie(Long code){
         // Returns a Movie object from its code
-        return movieRepository.findByCode(code);
+        Optional<Movie> found = movieRepository.findById(code);
+        if(found.isPresent()){
+            return found.get();
+        }
+        else{
+            return null;
+        }
     }
-    public boolean removeMovie(String code){
+    public boolean removeMovie(Long code){
         // Returns true if successful, false if not.
         Movie movie = this.getMovie(code);
         if(Objects.isNull(movie)){
             return false;
         }
         else{
-            movieRepository.removeByCode(code);
+            movieRepository.removeById(code);
             return true;
         }
     }

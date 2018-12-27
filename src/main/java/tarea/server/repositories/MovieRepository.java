@@ -8,61 +8,62 @@ import tarea.server.model.Movie;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
-public interface MovieRepository extends CrudRepository<Movie, String>, JpaSpecificationExecutor {
+public interface MovieRepository extends CrudRepository<Movie, Long>, JpaSpecificationExecutor {
     List<Movie> findAll();
 
-    Movie findByCode(String code);
+    Optional<Movie> findById(Long id);
 
     @Transactional
     Movie save(Movie movie);
 
     @Transactional
-    void removeByCode(String code);
+    void removeById(Long id);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.name = ?2 where m.code = ?1")
-    void setMovieNameByCode(String code, String name);
+    @Query("update Movie m set m.name = ?2 where m.id = ?1")
+    void setMovieNameById(Long id, String name);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.description = ?2 where m.code = ?1")
-    void setMovieDescriptionByCode(String code, String description);
+    @Query("update Movie m set m.description = ?2 where m.id = ?1")
+    void setMovieDescriptionById(Long id, String description);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.year = ?2 where m.code = ?1")
-    void setMovieYearByCode(String code, int year);
+    @Query("update Movie m set m.year = ?2 where m.id = ?1")
+    void setMovieYearById(Long id, int year);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.genre = ?2 where m.code = ?1")
-    void setMovieGenreByCode(String code, String genre);
+    @Query("update Movie m set m.genre = ?2 where m.id = ?1")
+    void setMovieGenreById(Long id, String genre);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.director = ?2 where m.code = ?1")
-    void setMovieDirectorByCode(String code, String director);
+    @Query("update Movie m set m.director = ?2 where m.id = ?1")
+    void setMovieDirectorById(Long id, String director);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.cast = ?2 where m.code = ?1")
-    void setMovieCastByCode(String code, String cast);
+    @Query("update Movie m set m.cast = ?2 where m.id = ?1")
+    void setMovieCastById(Long id, String cast);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.score = ?2 where m.code = ?1")
-    void setMovieScoreByCode(String code, float score);
+    @Query("update Movie m set m.score = ?2 where m.id = ?1")
+    void setMovieScoreById(Long id, float score);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.trailer = ?2 where m.code = ?1")
-    void setMovieTrailerByCode(String code, String trailer);
+    @Query("update Movie m set m.trailer = ?2 where m.id = ?1")
+    void setMovieTrailerById(Long id, String trailer);
 
     @Transactional
     @Modifying
-    @Query("update Movie m set m.poster = ?2 where m.code = ?1")
-    void setMoviePosterByCode(String code, String poster);
+    @Query("update Movie m set m.poster = ?2 where m.id = ?1")
+    void setMoviePosterById(Long id, String poster);
 }
 

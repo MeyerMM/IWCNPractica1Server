@@ -48,10 +48,9 @@ public class MovieController {
             @ApiResponse(code = HttpServletResponse.SC_OK, message = "Movie Found", response = Movie.class),
             @ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Movie not found")
     })
-    public ResponseEntity<Movie> getMovie(@ApiParam("Unique code identifier of the movie") @PathVariable String code) {
+    public ResponseEntity<Movie> getMovie(@ApiParam("Unique code identifier of the movie") @PathVariable Long code) {
         Movie movie = movieList.getMovie(code);
         if (Objects.isNull(movie)) {
-
             logger.warn(String.format("Movie with code %s not found", code));
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
@@ -93,14 +92,14 @@ public class MovieController {
             @ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Movie with wrong format")
     })
     public ResponseEntity modifyMovie(@ApiParam("Movie object to be modified") @RequestBody Movie modifiedMovie) {
-            Movie originalMovie = movieList.getMovie(modifiedMovie.getCode());
+            Movie originalMovie = movieList.getMovie(modifiedMovie.getId());
             if(Objects.isNull(originalMovie)){
-                logger.warn(String.format("Movie with code %s found  not found. Modification failed", modifiedMovie.getCode()));
+                logger.warn(String.format("Movie with code %s found  not found. Modification failed", modifiedMovie.getId()));
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             else{
                 int numberOfChanges = movieList.updateMovie(modifiedMovie);
-                logger.info(String.format("Movie with code %s modified %d times", modifiedMovie.getCode(), numberOfChanges));
+                logger.info(String.format("Movie with code %s modified %d times", modifiedMovie.getId(), numberOfChanges));
                 return new ResponseEntity<>(HttpStatus.OK);
             }
     }
@@ -111,10 +110,27 @@ public class MovieController {
     @ApiOperation(value= "Add a new movie")
     @ApiResponses({
             @ApiResponse(code = HttpServletResponse.SC_CREATED, message = "Created"),
+            @ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Movie not created"),
+            @ApiResponse(code = HttpServletResponse.SC_INTERNAL_SERVER_ERROR, message = "Movie not created")
     })
-    public void submitMovie(@ApiParam("Movie object to be submitted") @RequestBody Movie movie) {
-        logger.info("New movie added");
-        movieList.addMovie(movie);
+    public ResponseEntity submitMovie(@ApiParam("Movie object to be submitted") @RequestBody Movie submittedMovie) {
+        if(Objects.isNull(submittedMovie.getName()) || submittedMovie.getName().isEmpty()){
+            logger.info("Movie addition failed due to invalid name");
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        else{
+           // Movie movie = new Movie(submittedMovie.getName());
+            boolean success = movieList.addMovie(submittedMovie);
+            if(success){
+                logger.info("New movie added");
+                return new ResponseEntity<>(HttpStatus.CREATED);
+            }
+            else{
+                logger.info("Movie addition failed due to internal error");
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+
+        }
     }
 
     // Remove a movie, using its unique code
@@ -124,7 +140,7 @@ public class MovieController {
             @ApiResponse(code = HttpServletResponse.SC_OK, message = "Movie removed"),
             @ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Movie not found")
     })
-    public ResponseEntity removeMovie(@ApiParam("Unique code identifier of the movie") @PathVariable String code) {
+    public ResponseEntity removeMovie(@ApiParam("Unique code identifier of the movie") @PathVariable Long code) {
         boolean success = movieList.removeMovie(code);
         if(success){
             logger.info(String.format("Movie with code %s removed", code));

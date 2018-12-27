@@ -32,11 +32,9 @@ public class MovieControllerTests {
     public void setUp(){
         movieController = new MovieController(movieList);
         movie1 = new Movie(
-                "CODE001",
                 "Anihilation"
         );
         movie2 = new Movie(
-                "CODE002",
                 "Donnie Darko"
         );
         movie2.setDescription("A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.");
@@ -93,64 +91,85 @@ public class MovieControllerTests {
     @Test
     public void getMovieOk() {
         ResponseEntity<Movie> expected = new ResponseEntity<>(movie1, HttpStatus.OK);
-        when(movieList.getMovie(movie1.getCode())).thenReturn(movie1);
-        ResponseEntity<Movie> result = movieController.getMovie(movie1.getCode());
+        when(movieList.getMovie(movie1.getId())).thenReturn(movie1);
+        ResponseEntity<Movie> result = movieController.getMovie(movie1.getId());
         Assert.assertEquals(result, expected);
-        verify(movieList, times(1)).getMovie(any(String.class));
+        verify(movieList, times(1)).getMovie(any(Long.class));
     }
 
     @Test
     public void getMovieFail() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        when(movieList.getMovie(any(String.class))).thenReturn(null);
-        ResponseEntity<Movie> result = movieController.getMovie(movie1.getCode());
+        when(movieList.getMovie(any(Long.class))).thenReturn(null);
+        ResponseEntity<Movie> result = movieController.getMovie(movie1.getId());
         Assert.assertEquals(result, expected);
-        verify(movieList, times(1)).getMovie(any(String.class));
+        verify(movieList, times(1)).getMovie(any(Long.class));
     }
 
     @Test
     public void modifyMovieOk() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.OK);
-        when(movieList.getMovie(movie2.getCode())).thenReturn(movie2);
+        when(movieList.getMovie(movie2.getId())).thenReturn(movie2);
         ResponseEntity<Movie> result = movieController.modifyMovie(movie2);
         Assert.assertEquals(result, expected);
-        verify(movieList, times(1)).getMovie(any(String.class));
+        verify(movieList, times(1)).getMovie(any(Long.class));
         verify(movieList, times(1)).updateMovie(any(Movie.class));
     }
 
     @Test
     public void modifyMovieFailMovieNotFound() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        when(movieList.getMovie(movie2.getCode())).thenReturn(null);
+        when(movieList.getMovie(movie2.getId())).thenReturn(null);
         ResponseEntity<Movie> result = movieController.modifyMovie(movie2);
         Assert.assertEquals(result, expected);
-        verify(movieList, times(1)).getMovie(any(String.class));
+        verify(movieList, times(1)).getMovie(any(Long.class));
         verify(movieList, times(0)).updateMovie(any(Movie.class));
     }
 
     @Test
-    public void submitMovie() {
-        movieController.submitMovie(movie1);
+    public void submitMovieOk() {
+        ResponseEntity expected = new ResponseEntity<>(HttpStatus.CREATED);
+        when(movieList.addMovie(movie1)).thenReturn(true);
+        ResponseEntity result =movieController.submitMovie(movie1);
         verify(movieList, times(1)).addMovie(movie1);
+        Assert.assertEquals(result, expected);
+    }
+
+    @Test
+    public void submitMovieServerFail() {
+        ResponseEntity expected = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        when(movieList.addMovie(movie1)).thenReturn(false);
+        ResponseEntity result =movieController.submitMovie(movie1);
+        verify(movieList, times(1)).addMovie(movie1);
+        Assert.assertEquals(result, expected);
+    }
+
+    @Test
+    public void submitMovieInputFail() {
+        movie1.setName("");
+        ResponseEntity expected = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        ResponseEntity result =movieController.submitMovie(movie1);
+        verify(movieList, times(0)).addMovie(movie1);
+        Assert.assertEquals(result, expected);
     }
 
     @Test
     public void removeMovieOk() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.OK);
-        when(movieList.removeMovie(movie1.getCode())).thenReturn(true);
-        ResponseEntity<Movie> result = movieController.removeMovie(movie1.getCode());
+        when(movieList.removeMovie(movie1.getId())).thenReturn(true);
+        ResponseEntity<Movie> result = movieController.removeMovie(movie1.getId());
         Assert.assertEquals(result, expected);
-        verify(movieList, times(1)).removeMovie(movie1.getCode());
-        verify(movieList, times(1)).removeMovie(any(String.class));
+        verify(movieList, times(1)).removeMovie(movie1.getId());
+        verify(movieList, times(1)).removeMovie(any(Long.class));
     }
 
     @Test
     public void removeMovieFail() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        when(movieList.removeMovie(movie1.getCode())).thenReturn(false);
-        ResponseEntity<Movie> result = movieController.removeMovie(movie1.getCode());
+        when(movieList.removeMovie(movie1.getId())).thenReturn(false);
+        ResponseEntity<Movie> result = movieController.removeMovie(movie1.getId());
         Assert.assertEquals(result, expected);
-        verify(movieList, times(1)).removeMovie(movie1.getCode());
-        verify(movieList, times(1)).removeMovie(any(String.class));
+        verify(movieList, times(1)).removeMovie(movie1.getId());
+        verify(movieList, times(1)).removeMovie(any(Long.class));
     }
 }

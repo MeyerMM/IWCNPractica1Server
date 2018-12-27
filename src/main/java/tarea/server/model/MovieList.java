@@ -14,7 +14,7 @@ public interface MovieList {
                                   Optional<Float> score); // Find movies that match the given criteria
     boolean addMovie(Movie movie);  // Adds the movie received as an object. Returns true if successful, false if not
     int updateMovie(Movie modifiedMovie); // Update one of the attributes of a movie. Returns the number of successful changes.
-    Movie getMovie(String code); // Returns a Movie object from its code
-    boolean removeMovie(String code); // Returns true if successful, false if not.
+    Movie getMovie(Long code); // Returns a Movie object from its code
+    boolean removeMovie(Long code); // Returns true if successful, false if not.
 
 }
