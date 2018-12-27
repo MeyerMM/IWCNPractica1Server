@@ -119,7 +119,6 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         else{
-           // Movie movie = new Movie(submittedMovie.getName());
             boolean success = movieList.addMovie(submittedMovie);
             if(success){
                 logger.info("New movie added");
