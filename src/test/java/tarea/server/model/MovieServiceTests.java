@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import tarea.server.externalapi.ExternalAPIHandler;
 import tarea.server.repositories.MovieRepository;
 
 import java.util.ArrayList;
@@ -22,19 +23,25 @@ import static org.mockito.Mockito.*;
 public class MovieServiceTests {
     @Mock
     private MovieRepository movieRepository;
+    @Mock
+    private ExternalAPIHandler externalHandler;
     @InjectMocks
     private MovieService movieService;
     private Movie movie1;
     private Movie movie2;
+    private Movie incompleteMovie2;
 
 
     @Before
     public void setUp(){
-        movieService = new MovieService(movieRepository);
+       movieService = new MovieService(movieRepository, externalHandler);
        movie1 = new Movie(
                 "Anihilation"
         );
         movie2 = new Movie(
+                "Donnie Darko"
+        );
+        incompleteMovie2 = new Movie(
                 "Donnie Darko"
         );
         movie2.setDescription("A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.");
@@ -88,10 +95,12 @@ public class MovieServiceTests {
     @Test
     public void addMovieOk(){
         boolean expected = true;
-        when( movieRepository.save(movie1)).thenReturn(movie2);
-        boolean result = movieService.addMovie(movie1);
+        when( externalHandler.completeMovie(incompleteMovie2)).thenReturn(movie2);
+        when( movieRepository.save(movie2)).thenReturn(movie2);
+        boolean result = movieService.addMovie(incompleteMovie2);
         Assert.assertEquals(result, expected);
         verify(movieRepository, times(1)).save(any(Movie.class));
+        verify(externalHandler, times(1)).completeMovie(any(Movie.class));
     }
 
     @Test

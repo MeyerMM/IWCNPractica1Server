@@ -94,7 +94,7 @@ public class MovieController {
     public ResponseEntity modifyMovie(@ApiParam("Movie object to be modified") @RequestBody Movie modifiedMovie) {
             Movie originalMovie = movieList.getMovie(modifiedMovie.getId());
             if(Objects.isNull(originalMovie)){
-                logger.warn(String.format("Movie with code %s found  not found. Modification failed", modifiedMovie.getId()));
+                logger.warn(String.format("Movie with code %s not found. Modification failed", modifiedMovie.getId()));
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
             else{

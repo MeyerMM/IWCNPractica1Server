@@ -9,14 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import tarea.server.externalapi.ExternalAPIHandler;
 
 @Service
 public class MovieService implements MovieList {
     private MovieRepository movieRepository;
+    private ExternalAPIHandler externalHandler;
 
     @Autowired
-    public MovieService(MovieRepository movieRepository){
+    public MovieService(MovieRepository movieRepository, ExternalAPIHandler externalHandler){
         this.movieRepository = movieRepository;
+        this.externalHandler = externalHandler;
     }
     public List<Movie> getMovieList(){
         // Returns the movie list
@@ -76,8 +79,18 @@ public class MovieService implements MovieList {
     }
 
     public boolean addMovie(Movie movie){
-        // Adds the movie received as an object. Returns true if successful, false if not
-        Movie addedMovie = movieRepository.save(movie);
+        // Adds the movie received as an object. Completes its data with an external API.
+        // If external data cannot be found, it stores the movie as it was received.
+        // Returns true if successful, false if not
+        Movie addedMovie;
+        Movie completeMovie = externalHandler.completeMovie(movie);
+        if(Objects.isNull(completeMovie)){
+            addedMovie = movieRepository.save(movie);
+        }
+        else{
+            addedMovie = movieRepository.save(completeMovie);
+        }
+
         return addedMovie != null;
     }
     public int updateMovie(Movie modifiedMovie) {

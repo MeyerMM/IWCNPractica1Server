@@ -40,7 +40,15 @@ configurations {
             // Exclude product and user as they consist only of generated getters and setters
             // Exclude configuration files from testing
             property "sonar.exclusions", "src/main/java/tarea/server/Practica1Server.java, " +
-                    "src/main/java/tarea/server/configuration/*" 
+                    "src/main/java/tarea/server/configuration/*," +
+                    "src/main/java/tarea/server/externalapi/OMDbMovie.java," +
+                    "src/main/java/tarea/server/externalapi/TheMovieDBFindResponse.java," +
+                    "src/main/java/tarea/server/externalapi/TheMovieDBMovieResults.java," +
+                    "src/main/java/tarea/server/externalapi/TheMovieDBVideoResult.java," +
+                    "src/main/java/tarea/server/externalapi/TheMovieDBVideosResponse.java," +
+                    "src/main/java/tarea/server/model/Movie.java," +
+                    "src/main/java/tarea/server/model/SearchCriteria.java," +
+                    "src/main/java/tarea/server/model/MovieSpecifications.java"
         }
     }
 }
@@ -50,6 +58,7 @@ dependencies {
     compile "io.springfox:springfox-swagger2:2.9.2"
     compile 'io.springfox:springfox-swagger-ui:2.9.2'
     compile 'mysql:mysql-connector-java'
+    compile("com.fasterxml.jackson.core:jackson-databind")
     testCompile("org.springframework.boot:spring-boot-starter-test")
     implementation('org.springframework.boot:spring-boot-starter-web')
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
