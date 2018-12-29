@@ -30,6 +30,8 @@ public class MovieServiceTests {
     private Movie movie1;
     private Movie movie2;
     private Movie incompleteMovie2;
+    private MovieDTO receivedMovie1;
+    private MovieDTO receivedMovie2;
 
 
     @Before
@@ -52,6 +54,21 @@ public class MovieServiceTests {
         movie2.setScore((float)4.0);
         movie2.setTrailer("https://youtu.be/ZZyBaFYFySk");
         movie2.setPoster("https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg");
+        receivedMovie1 = new MovieDTO(
+                "Anihilation"
+        );
+        receivedMovie2 = new MovieDTO(
+                "Donnie Darko"
+        );
+        receivedMovie2.setDescription("A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.");
+        receivedMovie2.setYear(2001);
+        receivedMovie2.setGenre("Drama");
+        receivedMovie2.setDirector("Richard Kelly");
+        receivedMovie2.setCast("Jake Gyllenhaal, Jena Malone, Mary McDonnell");
+        receivedMovie2.setScore((float)4);
+        receivedMovie2.setTrailer("https://youtu.be/ZZyBaFYFySk");
+        receivedMovie2.setPoster("https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg");
+
     }
 
     @Test
@@ -155,8 +172,9 @@ public class MovieServiceTests {
     @Test
     public void updateWholeMovieOk(){
         int expected = 9;
-        when(movieRepository.findById(movie2.getId())).thenReturn(Optional.of(movie2));
-        int result = movieService.updateMovie(movie2);
+        receivedMovie2.setId(movie2.getId());  // The user will provide the Id of the movie to find
+        when(movieRepository.findById(receivedMovie2.getId())).thenReturn(Optional.of(movie2));
+        int result = movieService.updateMovie(receivedMovie2);
         verify(movieRepository, times(1)).setMovieNameById(any(Long.class), any(String.class));
         verify(movieRepository, times(1)).setMovieDescriptionById(any(Long.class), any(String.class));
         verify(movieRepository, times(1)).setMovieYearById(any(Long.class), any(int.class));
@@ -172,8 +190,9 @@ public class MovieServiceTests {
     @Test
     public void updatePartialMovieOk(){
         int expected = 1;
-        when(movieRepository.findById(movie1.getId())).thenReturn(Optional.of(movie1));
-        int result = movieService.updateMovie(movie1);
+        receivedMovie1.setId(movie1.getId());  // The user will provide the Id of the movie to find
+        when(movieRepository.findById(receivedMovie1.getId())).thenReturn(Optional.of(movie1));
+        int result = movieService.updateMovie(receivedMovie1);
         verify(movieRepository, times(1)).setMovieNameById(any(Long.class), any(String.class));
         verify(movieRepository, times(0)).setMovieDescriptionById(any(Long.class), any(String.class));
         verify(movieRepository, times(0)).setMovieYearById(any(Long.class), any(int.class));
@@ -190,8 +209,8 @@ public class MovieServiceTests {
     @Test
     public void updateMovieFailCodeNull(){
         int expected = 0;
-        movie2.setId(null);
-        int result = movieService.updateMovie(movie2);
+        receivedMovie2.setId(null);
+        int result = movieService.updateMovie(receivedMovie2);
         verify(movieRepository, times(0)).setMovieNameById(any(Long.class), any(String.class));
         verify(movieRepository, times(0)).setMovieDescriptionById(any(Long.class), any(String.class));
         verify(movieRepository, times(0)).setMovieYearById(any(Long.class), any(int.class));
@@ -207,8 +226,8 @@ public class MovieServiceTests {
     @Test
     public void updateMovieFailNameEmpty(){
         int expected = 0;
-        movie2.setName("");
-        int result = movieService.updateMovie(movie2);
+        receivedMovie2.setName("");
+        int result = movieService.updateMovie(receivedMovie2);
         verify(movieRepository, times(0)).setMovieNameById(any(Long.class), any(String.class));
         verify(movieRepository, times(0)).setMovieDescriptionById(any(Long.class), any(String.class));
         verify(movieRepository, times(0)).setMovieYearById(any(Long.class), any(int.class));

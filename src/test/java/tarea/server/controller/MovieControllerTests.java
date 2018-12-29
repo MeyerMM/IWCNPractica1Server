@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import tarea.server.model.Movie;
+import tarea.server.model.MovieDTO;
 import tarea.server.model.MovieList;
 
 import java.util.LinkedList;
@@ -27,6 +28,7 @@ public class MovieControllerTests {
     private MovieController movieController;
     private Movie movie1;
     private Movie movie2;
+    private MovieDTO receivedMovie2;
 
     @Before
     public void setUp(){
@@ -45,6 +47,17 @@ public class MovieControllerTests {
         movie2.setScore((float)4);
         movie2.setTrailer("https://youtu.be/ZZyBaFYFySk");
         movie2.setPoster("https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg");
+        receivedMovie2 = new MovieDTO(
+                "Donnie Darko"
+        );
+        receivedMovie2.setDescription("A troubled teenager is plagued by visions of a man in a large rabbit suit who manipulates him to commit a series of crimes, after he narrowly escapes a bizarre accident.");
+        receivedMovie2.setYear(2001);
+        receivedMovie2.setGenre("Drama");
+        receivedMovie2.setDirector("Richard Kelly");
+        receivedMovie2.setCast("Jake Gyllenhaal, Jena Malone, Mary McDonnell");
+        receivedMovie2.setScore((float)4);
+        receivedMovie2.setTrailer("https://youtu.be/ZZyBaFYFySk");
+        receivedMovie2.setPoster("https://m.media-amazon.com/images/M/MV5BZjZlZDlkYTktMmU1My00ZDBiLWFlNjEtYTBhNjVhOTM4ZjJjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg");
     }
 
     @Test
@@ -109,47 +122,49 @@ public class MovieControllerTests {
     @Test
     public void modifyMovieOk() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.OK);
+        receivedMovie2.setId(movie2.getId());  // The user will provide the Id of the movie to find
         when(movieList.getMovie(movie2.getId())).thenReturn(movie2);
-        ResponseEntity<Movie> result = movieController.modifyMovie(movie2);
+        ResponseEntity<Movie> result = movieController.modifyMovie(receivedMovie2);
         Assert.assertEquals(result, expected);
         verify(movieList, times(1)).getMovie(any(Long.class));
-        verify(movieList, times(1)).updateMovie(any(Movie.class));
+        verify(movieList, times(1)).updateMovie(any(MovieDTO.class));
     }
 
     @Test
     public void modifyMovieFailMovieNotFound() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        when(movieList.getMovie(movie2.getId())).thenReturn(null);
-        ResponseEntity<Movie> result = movieController.modifyMovie(movie2);
+        receivedMovie2.setId(movie2.getId());  // The user will provide the Id of the movie to find
+        when(movieList.getMovie(any(Long.class))).thenReturn(null);
+        ResponseEntity<Movie> result = movieController.modifyMovie(receivedMovie2);
         Assert.assertEquals(result, expected);
         verify(movieList, times(1)).getMovie(any(Long.class));
-        verify(movieList, times(0)).updateMovie(any(Movie.class));
+        verify(movieList, times(0)).updateMovie(any(MovieDTO.class));
     }
 
     @Test
     public void submitMovieOk() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.CREATED);
-        when(movieList.addMovie(movie1)).thenReturn(true);
-        ResponseEntity result =movieController.submitMovie(movie1);
-        verify(movieList, times(1)).addMovie(movie1);
+        when(movieList.addMovie(any(Movie.class))).thenReturn(true);
+        ResponseEntity result =movieController.submitMovie(receivedMovie2);
+        verify(movieList, times(1)).addMovie(any(Movie.class));
         Assert.assertEquals(result, expected);
     }
 
     @Test
     public void submitMovieServerFail() {
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        when(movieList.addMovie(movie1)).thenReturn(false);
-        ResponseEntity result =movieController.submitMovie(movie1);
-        verify(movieList, times(1)).addMovie(movie1);
+        when(movieList.addMovie(any(Movie.class))).thenReturn(false);
+        ResponseEntity result =movieController.submitMovie(receivedMovie2);
+        verify(movieList, times(1)).addMovie(any(Movie.class));
         Assert.assertEquals(result, expected);
     }
 
     @Test
     public void submitMovieInputFail() {
-        movie1.setName("");
+        receivedMovie2.setName("");
         ResponseEntity expected = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        ResponseEntity result =movieController.submitMovie(movie1);
-        verify(movieList, times(0)).addMovie(movie1);
+        ResponseEntity result =movieController.submitMovie(receivedMovie2);
+        verify(movieList, times(0)).addMovie(any(Movie.class));
         Assert.assertEquals(result, expected);
     }
 

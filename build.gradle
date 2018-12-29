@@ -37,7 +37,7 @@ configurations {
     sonarqube {
         properties {
             // Exclude main class from testing
-            // Exclude product and user as they consist only of generated getters and setters
+            // Exclude classes that consist only of generated getters and setters
             // Exclude configuration files from testing
             property "sonar.exclusions", "src/main/java/tarea/server/Practica1Server.java, " +
                     "src/main/java/tarea/server/configuration/*," +
@@ -47,6 +47,7 @@ configurations {
                     "src/main/java/tarea/server/externalapi/TheMovieDBVideoResult.java," +
                     "src/main/java/tarea/server/externalapi/TheMovieDBVideosResponse.java," +
                     "src/main/java/tarea/server/model/Movie.java," +
+                    "src/main/java/tarea/server/model/MovieDTO.java," +
                     "src/main/java/tarea/server/model/SearchCriteria.java," +
                     "src/main/java/tarea/server/model/MovieSpecifications.java"
         }

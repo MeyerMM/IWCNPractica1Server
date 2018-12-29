@@ -3,6 +3,7 @@ package tarea.server.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tarea.server.model.Movie;
+import tarea.server.model.MovieDTO;
 import tarea.server.model.MovieList;
 import java.util.List;
 import java.util.Objects;
@@ -91,7 +92,7 @@ public class MovieController {
             @ApiResponse(code = HttpServletResponse.SC_NOT_FOUND, message = "Movie not found"),
             @ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Movie with wrong format")
     })
-    public ResponseEntity modifyMovie(@ApiParam("Movie object to be modified") @RequestBody Movie modifiedMovie) {
+    public ResponseEntity modifyMovie(@ApiParam("Movie object to be modified") @RequestBody MovieDTO modifiedMovie) {
             Movie originalMovie = movieList.getMovie(modifiedMovie.getId());
             if(Objects.isNull(originalMovie)){
                 logger.warn(String.format("Movie with code %s not found. Modification failed", modifiedMovie.getId()));
@@ -113,13 +114,23 @@ public class MovieController {
             @ApiResponse(code = HttpServletResponse.SC_BAD_REQUEST, message = "Movie not created"),
             @ApiResponse(code = HttpServletResponse.SC_INTERNAL_SERVER_ERROR, message = "Movie not created")
     })
-    public ResponseEntity submitMovie(@ApiParam("Movie object to be submitted") @RequestBody Movie submittedMovie) {
+    public ResponseEntity submitMovie(@ApiParam("Movie object to be submitted") @RequestBody MovieDTO submittedMovie) {
         if(Objects.isNull(submittedMovie.getName()) || submittedMovie.getName().isEmpty()){
             logger.info("Movie addition failed due to invalid name");
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         else{
-            boolean success = movieList.addMovie(submittedMovie);
+            Movie movieToSubmit = new Movie(submittedMovie.getName());
+            movieToSubmit.setDescription(submittedMovie.getDescription());
+            movieToSubmit.setYear(submittedMovie.getYear());
+            movieToSubmit.setGenre(submittedMovie.getGenre());
+            movieToSubmit.setDirector(submittedMovie.getDirector());
+            movieToSubmit.setCast(submittedMovie.getCast());
+            movieToSubmit.setScore(submittedMovie.getScore());
+            movieToSubmit.setPoster(submittedMovie.getPoster());
+            movieToSubmit.setTrailer(submittedMovie.getTrailer());
+
+            boolean success = movieList.addMovie(movieToSubmit);
             if(success){
                 logger.info("New movie added");
                 return new ResponseEntity<>(HttpStatus.CREATED);

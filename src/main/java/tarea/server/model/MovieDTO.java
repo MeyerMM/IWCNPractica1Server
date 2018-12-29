@@ -3,19 +3,21 @@ package tarea.server.model;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @ApiModel(description = "Class that represents a movie")
-@Entity
-public class Movie {
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id = Integer.toUnsignedLong(0);
-    @NotBlank
+public class MovieDTO {
+    @ApiModelProperty(notes = "Unique id that identifies the movie.", example = "\"3\"")
+    private Long id;
     @ApiModelProperty(notes = "Name of the movie", example = "It")
     private String name;
-    @ApiModelProperty(notes = "Description of the movie", example = "In 1960, seven pre-teen outcasts fight an evil demon who poses as a child-killing clown. Thirty years later, they reunite to stop the demon once and for all when it returns to their hometown.")
+    @ApiModelProperty(notes = "Description of the movie", example = "In 1960, seven pre-teen outcasts fight an evil " +
+            "demon who poses as a child-killing clown. Thirty years later, they reunite to stop the demon once and for " +
+            "all when it returns to their hometown.")
     private String description;
     @ApiModelProperty(notes = "Year of release of the movie", example = "2017")
     private Integer year;
@@ -32,15 +34,10 @@ public class Movie {
     @ApiModelProperty(notes = "URL to the poster of the movie", example = "https://m.media-amazon.com/images/M/MV5BZDVkZmI0YzAtNzdjYi00ZjhhLWE1ODEtMWMzMWMzNDA0NmQ4XkEyXkFqcGdeQXVyNzYzODM3Mzg@._V1_SY1000_CR0,0,666,1000_AL_.jpg")
     private String poster;
 
-    public Movie() {
+    public MovieDTO() {
     }
 
-    public Movie(String name) {
-        this.name = name;
-    }
-
-    public Movie(Long id, String name) {
-        this.id = id;
+    public MovieDTO(String name) {
         this.name = name;
     }
 

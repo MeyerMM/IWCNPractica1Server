@@ -93,7 +93,7 @@ public class MovieService implements MovieList {
 
         return addedMovie != null;
     }
-    public int updateMovie(Movie modifiedMovie) {
+    public int updateMovie(MovieDTO modifiedMovie) {
         Movie movie = this.getMovie(modifiedMovie.getId());
         if(Objects.isNull(movie)){ // If the movie is not found in the database, it cannot be updated.
             return 0;
