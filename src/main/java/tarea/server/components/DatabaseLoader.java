@@ -27,7 +27,7 @@ public class DatabaseLoader {
         movie.setCast("Daniel Kaluuya, Allison Williams, Bradley Whitford");
         movie.setYear(2017);
         movie.setScore((float)3.8);
-        movie.setTrailer("https://youtu.be/DzfpyUB60YY");
+        movie.setTrailer("https://www.youtube.com/embed/DzfpyUB60YY");
         movie.setPoster("https://m.media-amazon.com/images/M/MV5BMjUxMDQwNjcyNl5BMl5BanBnXkFtZTgwNzcwMzc0MTI@._V1_SY1000_CR0,0,675,1000_AL_.jpg");
         movieRepository.save(movie);
     }

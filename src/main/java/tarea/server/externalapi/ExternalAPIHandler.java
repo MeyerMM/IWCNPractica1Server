@@ -35,7 +35,7 @@ public class ExternalAPIHandler {
         theMovieDBAccessKey = "api_key=c49a8abb94461d2f60632418dc3e0300";
         theMovieDBSource = "external_source=imdb_id";
         posterBase = "https://image.tmdb.org/t/p/w1280";
-        videoBase = "https://youtu.be/";
+        videoBase = "https://www.youtube.com/embed/";
     }
 
     public OMDbMovie getMovieFromOMDb(Movie wantedMovie){

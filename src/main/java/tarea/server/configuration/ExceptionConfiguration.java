@@ -19,7 +19,7 @@ public class ExceptionConfiguration {
         return new ResponseEntity<Object>(new Object(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> unhandledException(HttpServletRequest request, NullPointerException exception){
+    public ResponseEntity<Object> unhandledException(HttpServletRequest request, Exception exception){
         logger.debug("Unhandled exception in request to: " + request.getRequestURI());
         return new ResponseEntity<Object>(new Object(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
